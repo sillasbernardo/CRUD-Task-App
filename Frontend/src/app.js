@@ -1,6 +1,5 @@
 import React from "react";
 
-import Task from "./Components/Task/Task";
 import Homepage from "./Pages/Homepage";
 
 const App = () => {

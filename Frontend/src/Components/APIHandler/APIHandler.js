@@ -1,8 +1,21 @@
 import axios from "axios";
 
-var postTask = function(id_, title_, description_) {
+const port = "3001"
+const url = `http://localhost:${port}`;
+
+var getTask = (setTaskData) => {
+	axios.get(`${url}/tasks`)
+		.then((res) => {
+			setTaskData(res.data);
+		})
+		.catch((err) => {
+			console.log(err);
+		})
+}
+
+var postTask = (id_, title_, description_) => {
 	
-	axios.post('http://localhost:3002/api/task', {
+	axios.post(`${url}/task/new`, {
 		id: id_,
 		title: title_,
 		description: description_
@@ -15,4 +28,12 @@ var postTask = function(id_, title_, description_) {
 	})
 }
 
-export {postTask};
+var updateTask = () => {
+	// TODO
+}
+
+var deleteTask = () => {
+	// TODO
+}
+
+export {getTask, postTask, updateTask, deleteTask};
