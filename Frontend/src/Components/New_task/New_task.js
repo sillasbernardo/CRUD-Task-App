@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
-import './New_task.css';
+import './New_task.scss';
 import Elements from "../Elements/Elements";
 import { postTask } from "../APIHandler/APIHandler";
 

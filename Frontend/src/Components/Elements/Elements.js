@@ -1,6 +1,6 @@
 import React from "react";
 
-import './Elements.css';
+import './Elements.scss';
 
 const Elements = (props) => {
 

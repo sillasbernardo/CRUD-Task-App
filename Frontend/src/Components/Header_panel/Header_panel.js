@@ -1,6 +1,6 @@
 import React from "react";
 
-import './Header_panel.css';
+import './Header_panel.scss';
 
 const Header_panel = (props) => {
 	return (
