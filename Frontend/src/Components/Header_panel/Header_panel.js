@@ -9,7 +9,7 @@ const Header_panel = (props) => {
 				<h1 className="header-title">TASK NOTES</h1>
 			</div>
 			<div className="header-btn">
-				<button onClick={props.handleNewTaskIsOpen}>New Task</button>
+				<button onClick={() => {props.onHandleNewModal(true)}}>New Task</button>
 			</div>
 		</div>
 	)

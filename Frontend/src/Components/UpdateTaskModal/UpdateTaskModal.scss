@@ -1,0 +1,50 @@
+$gray-container-width: 100%;
+$gray-container-height: 100%;
+
+.gray-container{
+	position: fixed;
+	offset-position: top;
+	width: $gray-container-width;
+	height: $gray-container-height;
+	background: rgba(0,0,0,0.7);
+
+	.sub-container{
+		position: relative;
+		width: $gray-container-width;
+		height: $gray-container-height;
+
+		.update-container{
+			background: #fff;
+			position: inherit;
+			width: fit-content;
+			height: fit-content;
+			left: 30%;
+			top: 30%;
+			padding: 20px;
+			border-radius: 10px;
+
+			.update-title{
+				display: flex;
+				flex-direction: column;
+				margin-bottom: 20px;
+			}
+
+			.update-description{
+				display: flex;
+				flex-direction: column;
+				margin-bottom: 20px;
+			}
+
+			.update-buttons{
+				position: relative;
+				display: flex;
+				justify-content: right;
+			
+				.button:nth-of-type(1) {
+					background-color: red;
+					margin-right: 20px;
+				}
+			}
+		}
+	}
+}

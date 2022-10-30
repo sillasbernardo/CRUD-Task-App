@@ -24,57 +24,63 @@ app.get('/tasks', (req, res) => {
 })
 
 app.post('/task/new', (req, res) => {
-	// Extract selected data from flow
+	// Get data from json
 	const { id, title, description } = req.body;
 
-	// Read tasks.json and push new data to it
+	// Push data to array
 	const currentContent = readJsonFile();
 	currentContent.push({ id, title, description });
 	
-	// Write new data to tasks.json
+	// Write modified array to json
 	fs.writeFileSync('../tasks.json', JSON.stringify(currentContent));
 })
 
 app.put('/task/update/:id', (req, res) => {
 
-	// Get id from actual task
-	const { id: paramsId } = req.params;
-
-	// Getting data from flow
+	// Get data from json
 	const { id, title, description } = req.body;
-
 	const currentContent = readJsonFile();
 
-	// Iterate over all tasks and find current id index
+	// Find index
 	const selectedItem = currentContent.findIndex((item) => {
-		item.id === paramsId
+		return item.id === id
 	})
-
-	// Save currentData from selected index
+	
+	// Backup array
 	const { id: cId, title: cTitle, description: cDescription } = currentContent[selectedItem];
 
-	// This makes the new object update only the different value, maintaining the old
-	const newObj = {
+	// Keep untouched values unchanged
+	const newTaskObj = {
 		id: id ? id : cId,
 		title: title ? title : cTitle,
 		description: description ? description : cDescription
 	}
 
-	// Update current content
-	currentContent[selectedItem] = newObj
+	// Update array
+	currentContent[selectedItem] = newTaskObj;
+
+	// Rewrite modified array to json
 	fs.writeFileSync('../tasks.json', JSON.stringify(currentContent));
 })
 
 app.delete('/task/delete/:id', (req, res) => {
+
+	// Get data from json
 	const { id: idParams } = req.params;
 	const currentContent = readJsonFile();
 
-	const selectedItem = currentContent.findIndex((item) => {
-		item.id === idParams
-	})
+	// Find index
+	var selectedItem;
+	for (let i = 0; i < currentContent.length; i++){
+		if (currentContent[i].id == idParams){
+			selectedItem = i
+		}
+	}
 
+	// Remove item from array
 	currentContent.splice(selectedItem, 1);
 
+	// Rewrite modified array to json
 	fs.writeFileSync('../tasks.json', JSON.stringify(currentContent))
 })
 

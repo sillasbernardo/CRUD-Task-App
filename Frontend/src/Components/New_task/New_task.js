@@ -11,13 +11,21 @@ const New_task = (props) => {
 	const descriptionRef = useRef(null);
 	const idTag = Date.now() + Math.random();
 
-	const handlePost = (event) => {
-		event.preventDefault();
-		postTask(
-			idTag,
-			titleRef.current.value,
-			descriptionRef.current.value
-		)
+	const onElementHandle = (type) => {
+		switch (type){
+			case "close":
+				props.onHandleNewModal(false);
+				break;
+			case "add":
+				postTask(
+					idTag,
+					titleRef.current.value,
+					descriptionRef.current.value
+				)
+				break;
+			default:
+				return
+		}
 	}
 
 	// Reposition new task modal when screen resizes
@@ -31,7 +39,7 @@ const New_task = (props) => {
 			<div className="heading">
 				<h3>Add new task</h3>
 				<Elements
-					handleNewTaskIsClose={props.handleNewTaskIsClose} 
+					onElementHandle={(e) => onElementHandle("close")} 
 					type='button' 
 					name='X' 
 					className='close' />
@@ -54,7 +62,7 @@ const New_task = (props) => {
 					name='description' />
 			</div>
 			<div className="btn">
-				<Elements type="button" postTask={(e) => handlePost(e)} name='Add'>Add</Elements>
+				<Elements type="button" onElementHandle={(e) => onElementHandle("add")} name='Add'/>
 			</div>
 		</form>
 	)

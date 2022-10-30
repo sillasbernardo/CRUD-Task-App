@@ -1,17 +1,23 @@
 import React from "react";
 
-import './Task.css';
+import './Task.scss';
 import { faPenToSquare, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { deleteTask } from "../APIHandler/APIHandler"
 
 const Task = (props) => {
+
 	return (
 		<div className="task-container">
-			<h3>{props.title}</h3>
-			<p>{props.description}</p>
+			<div className="title">
+				<h3>{props.title}</h3>
+			</div>
+			<div className="description">
+				<p>{props.description}</p>
+			</div>
 			<div className="action-btn">
-				<FontAwesomeIcon className="edit" icon={faPenToSquare} />
-				<FontAwesomeIcon className="delete" icon={faTrash} />
+				<FontAwesomeIcon onClick={() => {props.onHandlePutModal(true, props.id)}} className="edit" icon={faPenToSquare} />
+				<FontAwesomeIcon onClick={() => {deleteTask(props.id)}} className="delete" icon={faTrash} />
 			</div>
 		</div>
 	)
