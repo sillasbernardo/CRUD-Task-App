@@ -16,15 +16,13 @@ npm install
 npm start
 ```
 
-## ☕ Features
+## ☕ Languages
 
 #### Frontend
-• ReactJs <br />
-• Sass <br />
-• Axios <br />
+<img width=30 src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" /> • <img width=30 src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg" />
 
 #### Backend
-• ExpressJs <br />
+<img width=30 src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" />
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
